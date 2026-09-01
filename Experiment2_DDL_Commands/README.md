@@ -105,123 +105,193 @@ CREATE TABLE Table_Name (
 
 **Question 1**
 --
--- Paste Question 1 here
+Create a table named Shipments with the following constraints:
+ShipmentID as INTEGER should be the primary key.
+ShipmentDate as DATE.
+SupplierID as INTEGER should be a foreign key referencing Suppliers(SupplierID).
+OrderID as INTEGER should be a foreign key referencing Orders(OrderID).
 
 ```sql
--- Paste your SQL code below for Question 1
+CREATE TABLE Shipments(
+    ShipmentID INTEGER PRIMARY KEY,
+    ShipmentDate DATE,
+    SupplierID INTEGER,
+    OrderID INTEGER,
+    FOREIGN KEY (SupplierID) REFERENCES Suppliers(SupplierID),
+    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+    );
 ```
 
 **Output:**
+<img width="1241" height="323" alt="image" src="https://github.com/user-attachments/assets/47fe7195-9def-49f8-aad3-5c78eab7657c" />
 
-![Output1](output.png)
 
 **Question 2**
 ---
--- Paste Question 2 here
+Insert a student with RollNo 201, Name David Lee, Gender M, Subject Physics, and MARKS 92 into the Student_details table.
 
 ```sql
--- Paste your SQL code below for Question 2
+INSERT INTO Student_details (RollNo,Name,Gender,Subject,MARKS) VALUES (201,'David Lee','M','Physics',92)
 ```
 
 **Output:**
 
-![Output2](output.png)
+<img width="1243" height="340" alt="image" src="https://github.com/user-attachments/assets/6d82878a-0422-4f0a-aba9-7c9f10bf53f3" />
 
 **Question 3**
 ---
--- Paste Question 3 here
+Write an SQL query to add a new column salary of type INTEGER to the Employees table, with a CHECK constraint that ensures the value in this column is greater than 0.
+
+ 
+
+ 
 
 ```sql
--- Paste your SQL code below for Question 3
+ALTER TABLE employees ADD COLUMN salary INTEGER CHECK (salary>0)
 ```
 
 **Output:**
 
-![Output3](output.png)
+<img width="1233" height="368" alt="image" src="https://github.com/user-attachments/assets/de56ec1e-a078-4ed3-b7f5-fc627ca1d41d" />
+
 
 **Question 4**
 ---
--- Paste Question 4 here
+Write an SQL Query to add the attributes designation, net_salary, and dob to the Companies table with the following data types:
+designation as VARCHAR(50)
+net_salary as NUMBER
+dob as DATE
+ 
+
+ 
 
 ```sql
--- Paste your SQL code below for Question 4
+ALTER TABLE Companies ADD COLUMN designation varchar(50);
+ALTER TABLE Companies ADD COLUMN net_salary number;
+ALTER TABLE Companies ADD COLUMN dob date;
 ```
 
 **Output:**
+<img width="1232" height="513" alt="image" src="https://github.com/user-attachments/assets/50ec5d45-4f48-4e24-9cc0-c1b91bcf1658" />
 
-![Output4](output.png)
+
 
 **Question 5**
 ---
--- Paste Question 5 here
-
+Create a table named Orders with the following constraints:
+OrderID as INTEGER should be the primary key.
+OrderDate as DATE should be not NULL.
+CustomerID as INTEGER should be a foreign key referencing Customers(CustomerID).
 ```sql
--- Paste your SQL code below for Question 5
+CREATE TABLE Orders(
+    OrderID INTEGER PRIMARY KEY,
+    OrderDate DATE NOT NULL,
+    CustomerID INTEGER,
+    FOREIGN KEY (CustomerID) REFERENCES Customers(CustomerID)
+);
 ```
 
 **Output:**
+ <img width="1228" height="376" alt="image" src="https://github.com/user-attachments/assets/e3dcbc92-10d1-4ad8-a51b-a9248a55550d" />
 
-![Output5](output.png)
 
 **Question 6**
 ---
--- Paste Question 6 here
-
+Create a table named Attendance with the following constraints:
+AttendanceID as INTEGER should be the primary key.
+EmployeeID as INTEGER should be a foreign key referencing Employees(EmployeeID).
+AttendanceDate as DATE.
+Status as TEXT should be one of 'Present', 'Absent', 'Leave'.
 ```sql
--- Paste your SQL code below for Question 6
+CREATE TABLE Attendance(
+    AttendanceID INTEGER PRIMARY KEY,
+    EmployeeID INTEGER,
+    AttendanceDate DATE,
+    Status TEXT CHECK (Status IN ('Present','Absent','Leave')),
+    FOREIGN KEY (EmployeeID) REFERENCES Employees(EmployeeID)
+    );
 ```
 
 **Output:**
 
-![Output6](output.png)
+<img width="1231" height="377" alt="image" src="https://github.com/user-attachments/assets/e91e8c64-ee8a-4761-8347-860e6c32959b" />
+
 
 **Question 7**
 ---
--- Paste Question 7 here
+Insert all employees from Former_employees into Employee
+
+Table attributes are EmployeeID, Name, Department, Salary
 
 ```sql
--- Paste your SQL code below for Question 7
+INSERT INTO Employee SELECT * FROM Former_employees;
 ```
 
 **Output:**
 
-![Output7](output.png)
+<img width="1233" height="365" alt="image" src="https://github.com/user-attachments/assets/eac9b55d-0630-447c-961d-19f49916bb5e" />
+
 
 **Question 8**
 ---
--- Paste Question 8 here
+Create a table named Products with the following constraints:
 
+ProductID should be the primary key.
+ProductName should be NOT NULL.
+Price is of real datatype and should be greater than 0.
+Stock is of integer datatype and should be greater than or equal to 0.
 ```sql
--- Paste your SQL code below for Question 8
+CREATE TABLE Products(
+    ProductID PRIMARY KEY,
+    ProductName NOT NULL,
+    Price REAL CHECK (Price > 0),
+    Stock INTEGER CHECK(Stock>=0)
+);
 ```
 
 **Output:**
 
-![Output8](output.png)
+<img width="1247" height="366" alt="image" src="https://github.com/user-attachments/assets/bfde3564-c70b-4f67-9fe6-892b2fced42f" />
+
 
 **Question 9**
 ---
--- Paste Question 9 here
+Insert the following employees into the Employee table:
+
+EmployeeID  Name        Position    Department  Salary
+----------  ----------  ----------  ----------  ----------
+2           John Smith  Developer   IT          75000
+3           Anna Bell   Designer    Marketing   68000
 
 ```sql
--- Paste your SQL code below for Question 9
+INSERT INTO Employee (EmployeeID,Name,Position,Department,Salary) VALUES (2,'John Smith','Developer','IT',75000);
+INSERT INTO Employee (EmployeeID,Name,Position,Department,Salary) VALUES (3,'Anna Bell','Designer','Marketing',68000);
 ```
 
 **Output:**
+<img width="1240" height="447" alt="image" src="https://github.com/user-attachments/assets/26da3683-633a-48c4-9609-b6e5ef235bf2" />
 
-![Output9](output.png)
 
 **Question 10**
 ---
--- Paste Question 10 here
+Create a table named Departments with the following columns:
+
+DepartmentID as INTEGER
+DepartmentName as TEXT
 
 ```sql
--- Paste your SQL code below for Question 10
+CREATE TABLE Departments(
+    DepartmentID INTEGER,
+    DepartmentName TEXT
+
+
+);
 ```
 
 **Output:**
 
-![Output10](output.png)
+<img width="1238" height="447" alt="image" src="https://github.com/user-attachments/assets/1028a1cd-5153-4399-8626-791da52b3caa" />
+
 
 
 ## RESULT
